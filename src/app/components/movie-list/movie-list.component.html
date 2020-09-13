@@ -1,0 +1,20 @@
+<div class="d-flex flex-wrap mt-4" style="justify-content: space-evenly">
+  <div *ngFor="let movie of movies" class="movie col-5 mb-4">
+    <div class="movie-img">
+      <img
+        [routerLink]="['/movie-detail', movie.id]"
+        [replaceUrl]="true"
+        class="shadow-lg"
+        [src]="
+          movie.poster_path
+            ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path
+            : 'https://www.tibs.org.tw/images/default.jpg'
+        "
+        height="256"
+        [alt]="movie.name"
+      />
+      <h3 *ngIf="!movie.poster_path">{{movie.title}}</h3>
+      <div class="progress-circle">{{ movie.vote_average }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "name": "app-movie-critic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

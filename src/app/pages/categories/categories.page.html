@@ -1,0 +1,10 @@
+<app-header title="Categories"></app-header>
+
+<ion-content>
+  <app-category-list
+    *ngFor="let genre of movieService.categories"
+    [genre]="genre"
+    [routerLink]="['/filtered-movie' , genre.id]"
+    [queryParams]="{category:genre.name , page:1}"
+  ></app-category-list>
+</ion-content>

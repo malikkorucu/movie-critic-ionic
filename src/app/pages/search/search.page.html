@@ -1,0 +1,25 @@
+<ion-header>
+  <app-header [title]="['Search :  ' + route.snapshot.queryParams.search]"></app-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button (click)="search()">
+        <ion-icon  slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar (keyup.enter)="search($event)" [(ngModel)]="searchWord" placeholder="Search Movie..."></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [scrollEvents]=true #searchContent >
+  <app-movie-list [movies]="movieService.searchResult"></app-movie-list>
+  <app-pagination
+    *ngIf="movieService.searchResult.length == 0 ? false : true"
+    page="search"
+  ></app-pagination>
+  <h1
+    class="text-center"
+    *ngIf="movieService.searchResult.length == 0 ? true : false"
+  >
+    No Result :/
+  </h1>
+</ion-content>

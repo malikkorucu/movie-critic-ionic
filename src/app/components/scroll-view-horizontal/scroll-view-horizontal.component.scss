@@ -1,0 +1,25 @@
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  position: relative;
+  height:350px;
+  -webkit-overflow-scrolling: touch;
+  background:url('../../../assets/1.png')center center no-repeat;
+  background-size:cover;
+  padding:50px 0;
+  display:flex;
+  align-items: center;
+ 
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .card {
+    display: inline-block;
+  }
+}
+
+  .content{
+    z-index:5
+  }

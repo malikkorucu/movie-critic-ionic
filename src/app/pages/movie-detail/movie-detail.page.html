@@ -1,0 +1,95 @@
+<app-header [title]="movieService.movieDetail.title"></app-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="commonService.doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="d-flex justify-content-center align-items-center flex-column p-0">
+    <div class="img d-flex justify-content-center">
+      <img
+        [src]="['https://image.tmdb.org/t/p/w500/' + movieService.movieDetail.backdrop_path]"
+        alt=""
+      />
+      <div class="blur d-flex align-items-center">
+        <img
+          class="poster-img ml-4"
+          width="100"
+          [src]="['https://image.tmdb.org/t/p/w500/' + movieService.movieDetail.poster_path]"
+          alt=""
+        />
+        <i
+          *ngIf="authService.isSignedIn"
+          (click)="movieService.addToFavorites()"
+          class="mt-2 bookmark-icon fas fa-bookmark"
+          [class.added]="includeCheck()"
+        ></i>
+      </div>
+    </div>
+
+    <div class="overview d-flex p-3 pt-4 bg-dark text-white">
+      <div class="left-aside">
+        <h3 class="text-center">{{movieService.movieDetail.title}}</h3>
+        <circle-progress
+          class="a"
+          [percent]="(movieService.movieDetail.vote_average / 10 ) * 100 "
+          [radius]="50"
+          [outerStrokeWidth]="6"
+          [innerStrokeWidth]="5"
+          [outerStrokeColor]="'#78C000'"
+          [innerStrokeColor]="'#C7E596'"
+          [animation]="true"
+          [showSubtitle]="false"
+          [animationDuration]="2000"
+          [backgroundColor]="'#343a40'"
+          [space]="5"
+          [unitsColor]="'#fff'"
+          [titleColor]="'#fff'"
+          [backgroundPadding]="0"
+        ></circle-progress>
+        <div class="mt-2">
+          <small
+            >R.Date :
+            <small style="color: rgb(172, 172, 172)"
+              >{{movieService.movieDetail.release_date}}</small
+            ></small
+          >
+        </div>
+        <div>
+          <small
+            >Vote Count :
+            <small style="color: rgb(172, 172, 172)"
+              >{{movieService.movieDetail.vote_count}}</small
+            ></small
+          >
+        </div>
+        <div>
+          <small
+            >Popularity :
+            <small style="color: rgb(172, 172, 172)"
+              >{{movieService.movieDetail.popularity}}</small
+            ></small
+          >
+        </div>
+      </div>
+      <ion-rating
+        [readonly]="!authService.isSignedIn"
+        class="ml-3"
+        [rate]="rate"
+        (rateChange)="onRateChange($event)"
+      >
+      </ion-rating>
+      <article class="pl-4">
+        {{movieService.movieDetail.overview}}
+
+        <div
+          (click)="[showComments = !showComments]"
+          class="read-comments mt-4 d-flex align-items-center"
+        >
+          <i class="fas fa-comments"></i>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <app-comment *ngIf="showComments"></app-comment>
+</ion-content>

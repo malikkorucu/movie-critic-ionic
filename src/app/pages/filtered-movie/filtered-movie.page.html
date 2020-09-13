@@ -1,0 +1,16 @@
+<app-header [title]="categoryName + ' Movies'"></app-header>
+
+<ion-content>
+  <!-- <div
+    class="movies-container d-flex flex-wrap mt-4"
+    style="justify-content: space-evenly"
+  >
+    <div *ngFor="let movie of movieService.categoryMovies" class="movie col-5 mb-4">
+      <img
+      class="shadow-lg" [src]="[movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : '']" />
+    </div>
+  </div> -->
+
+  <app-movie-list [movies]="movieService.categoryMovies"></app-movie-list>
+  <app-pagination page="filteredMoviesByGenre"></app-pagination>
+</ion-content>

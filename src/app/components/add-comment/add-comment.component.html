@@ -1,0 +1,30 @@
+<div class="add-comment"><div class="blur"></div></div>
+
+<ion-fab
+  (click)="[movieService.addComment(commentText , isSpoiler) , dismiss()]"
+  vertical="top"
+  horizontal="end"
+  slot="fixed"
+>
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab (click)="dismiss()" vertical="top" horizontal="start" slot="fixed">
+  <ion-fab-button>
+    <ion-icon name="arrow-back-circle"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<div class="textarea">
+  <div class="toggle d-flex align-items-center">
+    <ion-toggle #toggle (click)="isSpoiler = !isSpoiler" [checked]="!isSpoiler" color="dark"></ion-toggle> is Spoiler
+  </div>
+  <textarea
+    (keyup)="getInnerText($event)"
+    [class.bg-red]="isSpoiler"
+    placeholder="enter your comment ..."
+  ></textarea>
+</div>
+

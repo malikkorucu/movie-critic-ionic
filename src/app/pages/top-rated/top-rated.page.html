@@ -1,0 +1,6 @@
+<app-header title="Top Rated Movies"></app-header>
+
+<ion-content  [scrollEvents]=true #a>
+  <app-movie-list [movies]="movieService.top_rated_movies"></app-movie-list>
+  <app-pagination *ngIf="movieService.top_rated_movies"  (click)="scrollTop()" page="top_rated"></app-pagination>
+</ion-content>

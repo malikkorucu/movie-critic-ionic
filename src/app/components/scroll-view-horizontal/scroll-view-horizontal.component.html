@@ -1,0 +1,16 @@
+<div class="container-fluid p-0 mt-4">
+  <h2 class="ml-2">{{ title }}</h2>
+  <div class="scrolling-wrapper">
+    <div class="content col-6 p-0 m-0">
+      <div *ngFor="let movie of movies" class="card ml-2">
+        <div class="image">
+          <img
+          [routerLink]="['/movie-detail' , movie.id]"
+            height="270"
+            [src]="['https://image.tmdb.org/t/p/w500' + movie.poster_path]"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

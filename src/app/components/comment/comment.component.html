@@ -1,0 +1,35 @@
+
+
+<div class="ui comments mt-4 px-3 mb-3">
+
+  <h3 class="d-flex justify-content-between">
+    Comments <small class="font-italic" (click)="presentModal()">Add Comment <strong>+</strong></small>
+  </h3>
+
+
+  <div *ngFor="let comment of movieService.comments" class="comment">
+    <div class="content">
+      <a class="author">{{comment.user.username}}</a>
+      <div class="metadata">
+        <span class="date">{{comment.createdAt | date}}</span>
+      </div>
+      <div *ngIf="!comment.isSpoiler" class="text py-3">{{comment.text}}</div>
+      <div *ngIf="comment.isSpoiler" class="spoiler py-3 font-italic">
+         <p>This comment has spoiler. If you're already want to see it. <strong (click)="comment.isSpoiler = !comment.isSpoiler">click here...</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <h3 class="text-center" *ngIf="movieService.paginateIsFinish">No Comment !!</h3>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+
+

@@ -1,0 +1,32 @@
+<div class="pagination d-flex justify-content-center mt-5">
+  <nav>
+    <ul class="pagination">
+      <li class="page-item">
+        <a
+          class="page-link"
+          tabindex="-1"
+          aria-disabled="true"
+          (click)="decreasePageCount()"
+          ><ion-icon color="tertiary" name="arrow-back-outline" size="large"></ion-icon
+        ></a>
+      </li>
+      <li
+        [ngClass]="{
+          active: currentPage === number,
+          disabled: number > movieService.total_pages
+        }"
+        (click)="postPageData(number)"
+        *ngFor="let number of paginationArray"
+        class="page-item"
+      >
+        <a [ngClass]="{'text-white': currentPage === number}" class="page-link d-flex align-items-center px-3 text-dark">{{ number }}</a>
+      </li>
+
+      <li class="page-item">
+        <a (click)="increasePageCount()" class="page-link"
+          ><ion-icon size="large" color="tertiary" name="arrow-forward-outline"></ion-icon
+        ></a>
+      </li>
+    </ul>
+  </nav>
+</div>

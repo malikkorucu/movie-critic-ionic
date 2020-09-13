@@ -1,0 +1,34 @@
+<app-header title="Sign Up"></app-header>
+
+<div
+  class="register-page d-flex align-items-center justify-content-center h-100"
+>
+  <div class="form-container w-100 d-flex flex-column">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input [(ngModel)]="registerFormData.name"></ion-input>
+    </ion-item>
+
+    <ion-item class="pt-4">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input [(ngModel)]="registerFormData.username"></ion-input>
+    </ion-item>
+
+    <ion-item class="pt-4">
+      <ion-label position="floating">E-mail adress</ion-label>
+      <ion-input [(ngModel)]="registerFormData.email"></ion-input>
+    </ion-item>
+
+    <ion-item class="pt-4">
+      <ion-label position="floating">password</ion-label>
+      <ion-input [(ngModel)]="registerFormData.password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item class="pt-4">
+      <ion-label position="floating">password x2</ion-label>
+      <ion-input [(ngModel)]="registerFormData.repeatPassword" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="postRegisterData()" expand="block" color="warning" class="mt-4">Sign Up</ion-button>
+  </div>
+</div>

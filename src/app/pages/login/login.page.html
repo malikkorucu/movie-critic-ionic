@@ -1,0 +1,17 @@
+<app-header title="Sign In"></app-header>
+
+<div class="login-page d-flex align-items-center justify-content-center h-100">
+  <div class="form-container w-100 p-5 d-flex flex-column">
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input [(ngModel)]="loginFormData.username"></ion-input>
+    </ion-item>
+
+    <ion-item class="pt-4">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input [(ngModel)]="loginFormData.password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="postFormData()" expand="block" color="warning" class="mt-4">Sign In</ion-button>
+  </div>
+</div>

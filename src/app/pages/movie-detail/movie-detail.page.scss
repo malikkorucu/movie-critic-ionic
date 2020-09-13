@@ -1,0 +1,58 @@
+.img {
+  position: relative;
+  .a {
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+  }
+  .blur {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 3;
+    position: absolute;
+    .poster-img {
+      border-radius: 15px;
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+i {
+  font-size: 40px;
+  color: rgb(231, 171, 31);
+}
+.overview {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  border-top: 10px solid rgb(51, 192, 41);
+}
+
+.bookmark-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: rgb(0, 0, 0);
+}
+.bookmark-icon.added {
+  color: rgb(16, 104, 10);
+}
+
+.fa-comments {
+  font-size: 25px;
+}
+article {
+  position: relative;
+  padding-bottom: 30px;
+  .read-comments {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+ion-rating {
+  --color: gray;
+  --color-filled: green;
+}

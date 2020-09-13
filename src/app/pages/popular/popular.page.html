@@ -1,0 +1,9 @@
+<app-header title="Popular Movies"></app-header>
+
+<ion-content [scrollEvents]="true" #ionContentPopular>
+     <ion-refresher slot="fixed" (ionRefresh)="commonService.doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<app-movie-list [movies]="movieService.popular_movies"></app-movie-list>
+<app-pagination *ngIf="movieService.popular_movies" (click)="scrollTop()" page="popular"></app-pagination>
+</ion-content>

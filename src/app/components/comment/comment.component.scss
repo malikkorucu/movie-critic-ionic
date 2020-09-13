@@ -1,0 +1,21 @@
+.comment {
+  padding: 10px 10px 0 10px !important;
+  min-height:50px;
+  border: 1px solid rgb(206, 206, 206) !important;
+  background: #f0f0f0 !important;
+  border-radius: 5px !important;
+  margin: 11px 0 !important;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid black !important;
+  position: relative !important;
+  .spoiler {
+    height: 100%;
+    width: 90%;
+    top:0;
+    left:0;
+    padding:10px;
+    background:rgb(255, 214, 214);
+    border-left:4px solid grey;
+    margin:15px;
+  }
+}

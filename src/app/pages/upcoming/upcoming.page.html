@@ -1,0 +1,6 @@
+<app-header title="Upcoming Movies"></app-header>
+
+<ion-content #ionContentUpcoming [scrollEvents]=true>
+    <app-movie-list  [movies]="movieService.upcoming_movies"></app-movie-list>
+    <app-pagination *ngIf="movieService.upcoming_movies"  (click)="scrollTop()" page="upcoming"></app-pagination>
+</ion-content>

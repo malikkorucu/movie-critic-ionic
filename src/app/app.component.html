@@ -1,0 +1,76 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list" class="m-0 p-0">
+          <div class="d-flex justify-content-center py-4">
+            <img width="150" height="130" src="../assets/a.png" alt="" />
+          </div>
+
+          <div *ngIf="authService.isSignedIn" class="my-3 signed-in-user">
+            <h3 class="username pl-3">
+              <i class="fas fa-user"></i
+              ><small class="pl-3 font-italic">{{
+                authService.signedInUser.email
+              }}</small>
+            </h3>
+          </div>
+
+          <ion-menu-toggle
+            class="mt-3"
+            auto-hide="false"
+            *ngFor="let p of appPages; let i = index"
+          >
+            <ion-item
+              (click)="commonService.selectedIndexMenu = i"
+              routerDirection="root"
+              [routerLink]="[p.url]"
+              [queryParams]="
+                p.url !== '/categories' &&
+                p.url !== '/login' &&
+                p.url !== 'register'
+                  ? { page: 1 }
+                  : {}
+              "
+              *ngIf="menuItemVisibilityControl(p)"
+              [replaceUrl]="true"
+              lines="none"
+              detail="false"
+              [class.selected]="commonService.selectedIndexMenu == i"
+            >
+              <ion-icon
+                slot="start"
+                [ios]="p.icon + '-outline'"
+                [md]="p.icon + '-sharp'"
+              ></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-item
+          *ngIf="authService.isSignedIn"
+          (click)="authService.signOut()"
+          detail="false"
+        >
+          <ion-icon slot="start" ios="exit-sharp" md="exit-sharp"></ion-icon>
+          <ion-label>Sign Out</ion-label>
+        </ion-item>
+
+        <ion-list *ngIf="authService.isSignedIn" id="labels-list">
+          <ion-list-header>Favorite Movies</ion-list-header>
+
+          <ion-item (click)="movieDetail(movie.movieId)" *ngFor="let movie of authService.signedInUser.favMovies" lines="none">
+            <ion-icon
+              slot="start"
+              ios="bookmark-outline"
+              md="bookmark-sharp"
+            ></ion-icon>
+            <ion-label >{{ movie.title }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

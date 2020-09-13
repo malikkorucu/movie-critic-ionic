@@ -1,0 +1,27 @@
+<app-header title="Home"></app-header>
+<ion-content [scrollEvents]="true" #ionContent>
+  <ion-refresher slot="fixed" (ionRefresh)="commonService.doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item class="d-flex align-items-center">
+    <ion-label position="floating">Search movie</ion-label>
+    <ion-input
+      [(ngModel)]="searchKeyword"
+      (keyup.enter)="search($event)"
+    ></ion-input>
+    <ion-icon (click)="search()" name="search-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <app-scroll-view-horizontal
+    title="Top Rated Movies"
+    [movies]="movieService.top_rated_movies"
+  ></app-scroll-view-horizontal>
+
+  <div class="d-flex my-4 align-items-center">
+    <h2 class="px-3 m-0">Discover</h2>
+  </div>
+  <app-movie-list [movies]="movieService.movies"></app-movie-list>
+
+  <app-pagination (click)="scrollTop()" page="discover"></app-pagination>
+</ion-content>

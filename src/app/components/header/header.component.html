@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="d-flex justify-content-between align-items-center">
+        <img
+          (click)="commonService.selectedIndexMenu = 0"
+          style="outline: none"
+          [routerLink]="['/home']"
+          [replaceUrl]="true"
+          [queryParams]="{ page: 1 }"
+          width="50"
+          src="../../../assets/b.png"
+          alt=""
+        />
+        {{ title }}
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
